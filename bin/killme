@@ -1,0 +1,57 @@
+#!/bin/bash
+# To find and kill a process
+# Argument1 : The word to grep the exact process.
+# Auther : deepak dot edakkott at orbitz dot com
+# Since  : Nov 13, 2014
+
+
+grepWord=$1;
+killer=$2
+processCount=0;
+
+f_get_process_count(){
+	processCount=`ps -ef | grep $grepWord | grep -vE 'grep|killme' | wc -l`
+}
+
+f_list_processes(){
+            	ps -ef | grep --color $1 | grep -vE 'grep|killme'
+}
+
+f_kill_processes(){
+		kill -9 `ps -ef | grep $1 | grep -vE 'grep|killme' |awk '{print $2}' | paste -sd" "`
+}
+
+f_ask_user(){
+	echo -e "\nDo you want to continue..?\n[Enter any digit]"
+	echo "1. No"
+	echo "2. Yes"
+	echo -n "Your answer : "
+	read input_user
+		case "$input_user" in
+		      1) echo -e "\nProgram exiting.\n\t!!! Bye !!!";exit 0;;
+		      2) echo -e "\nOkey.";;
+		      *) echo "Wrong input. Try again"
+			f_ask_user
+		esac
+	echo -e "\n"
+}
+
+
+
+f_get_process_count;
+        if [ $processCount -ne 0 ];
+        then
+		if [ "$killer" != "2" ];
+		then
+			f_list_processes $grepWord;
+			echo -e "\n\nAbove process(es) will be killed...\n\n"
+			f_ask_user;
+		fi
+
+		f_kill_processes $grepWord ;
+		[ $? -eq 0 ] && echo "The process(es) has been killed successfully !!"
+
+        else
+            	echo -e "\nNo process to kill with name \"$grepWord\"\n"
+        fi
+

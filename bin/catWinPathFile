@@ -1,0 +1,12 @@
+#!/bin/bash
+# cat file with windows path
+
+winFile=`echo "$1"`
+
+secondChr=`expr substr $(echo "$winFile") 2 1`
+
+if [ "$secondChr" == ":" ] ;
+then
+unixFile=$(echo "$winFile"  | sed s/://1 |  sed 's/\\/\//g')
+fi
+echo "/$unixFile"

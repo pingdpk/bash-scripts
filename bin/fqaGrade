@@ -1,0 +1,6 @@
+#!/bin/bash
+echo -ne "\nGrade\t: "
+curl -s "http://graphite.stag.o.com/render/?target=keepLastValue(averageSeries(availability.lastJob.cqa.*.percent))&from=-30min&rawData=true" | awk -F\, '{print $NF}'
+echo -e "\nNote:\n====="
+echo -e "Date\t\t: `date`"
+echo -e "The grades are\t: A+ >= 98, A >= 90, B >= 80, C >= 70, D >= 60, Fail < 60"

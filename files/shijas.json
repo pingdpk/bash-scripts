@@ -1,0 +1,33 @@
+[{
+"job_type": "USERS",
+"rule_level": "GENERAL",
+"rule_type": "MAXLENGTH",
+"rule": {
+"type": "MAXLENGTH","field_name": "first_name","max_length":30,"message_key": "max_length constrain failed : first_name"}
+},
+
+{
+"job_type": "USERS",
+"rule_level": "GENERAL",
+"rule_type": "MANDATE",
+"rule": {
+"type": "COMBINEDFILEDRULE","fields": ["first_name","email","last_name"],"message_key": "missing mandatory one of the mandatory field"}
+},
+
+{
+"job_type": "USERS",
+"rule_level": "GENERAL",
+"rule_type": "FIELDFORMATRULE",
+"rule": {
+"type": "FIELDFORMATRULE","field_name": "first_name","reg_ex":"1212","message_key": "max_length constrain failed : first_name"}
+},
+
+{
+"job_type": "USERS",
+"rule_level": "GENERAL",
+"rule_type": "FIELDFORMATRULE",
+"rule": {
+"type": "FIELDFORMATRULE","field_name": "first_name","reg_ex":"^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$","message_key": "max_length constrain failed : first_name"}
+}
+]
+

@@ -1,0 +1,13 @@
+#!/bin/bash
+dir=`pwd`
+cd $dir
+echo -e "\nSonar running from the repository :  $dir"
+sh ~/orbitZ/sonar/sonar-3.5.1/bin/linux-x86-32/sonar.sh "$1" &
+#echo $!
+sleep 5;
+[ "$1" == "start" -o "$1" == "restart" ] && sh ~/orbitZ/sonar/sonar-runner-2.2.2/bin/sonar-runner
+
+#TODO
+#check sonar pid first
+#then if running; start sonar-runner
+#else tell user to run again

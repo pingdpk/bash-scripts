@@ -1,0 +1,6 @@
+#!/bin/bash
+count="";
+[ ! -z $1 ] && count="-$1" ;
+echo -e "\n$(tput smul)Branch : `git branch | grep '^*'|awk '{$1="";print}'`"
+echo $(tput rmul) $(tput bold)
+git log --pretty=format:"%h - %an, %ad --> %s" --date=iso --graph $count

@@ -1,0 +1,36 @@
+pwdir=`pwd`
+echo "#Directory : "$pwdir
+ctrdir="/home/dedakkott/workspace/ctr-web-ofb"
+[ "$pwdir" != "/home/dedakkott/workspace/ctr-web-ofb" ]  && echo -e "Not a ctr directory.\nPlease go to $ctrdir and run the command again.\n" && exit 0;
+
+echo -e "\n\n# Fetching origin\n~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+git fetch origin
+
+echo -e "\n\n# Fetching ctr\n~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+git fetch ctr
+
+echo -e "\n\n# Change branch to master\n~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+git checkout master
+
+echo -e "\n\n# Reset to origin/master\n~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+git reset --hard origin/master
+
+echo -e "\n\n# Branch : master | Showing log\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+git log --pretty=format:"%h - %an, %ad --> %s" --date=iso --graph -10
+
+echo -e "\n\n# Change branch to CTR\n~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+git checkout CTR
+
+echo -e "\n\n# Reset to ctr/CTR\n~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+git reset --hard ctr/CTR
+
+echo -e "\n\n# Branch : CTR | Showing log before rebase\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+git log --pretty=format:"%h - %an, %ad --> %s" --date=iso --graph -10
+
+echo -e "\n\n# Rebase to master branch\n~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+git rebase master
+
+echo -e "\n\n# Branch : CTR | Showing log after rebase\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+git log --pretty=format:"%h - %an, %ad --> %s" --date=iso --graph -25
+
+echo -e "\n\n# Now please push this changes to ctr/CTR with -f\n\n"

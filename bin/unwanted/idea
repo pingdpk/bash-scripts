@@ -1,0 +1,1 @@
+sh ~/Intellij/idea-IC-134.1445/bin/./idea.sh & > /dev/null 2>&1

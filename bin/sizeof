@@ -1,0 +1,2 @@
+echo $1
+du --max-depth=1 -k $1 | sort -nr | cut -f2 | xargs -d '\n' du -sh 2>/dev/null

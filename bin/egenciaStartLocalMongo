@@ -1,0 +1,5 @@
+#!/bin/bash
+# Start Mongo DB in local machine
+
+cd /d/Applns/MongoDB/Server/3.0/
+bin/mongod --dbpath D:/Applns/MongoDB/data --port 27017

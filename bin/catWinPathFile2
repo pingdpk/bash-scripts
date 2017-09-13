@@ -1,0 +1,9 @@
+#!/bin/bash
+# cat file with windows path
+
+winFile="$1"
+echo $winFile
+echo $winFile | sed s/://1 
+echo $winFile | sed 's/\\/\//g'
+unixFile=$(echo "$winFile"  | sed s/://1 |  sed 's/\\/\//g')
+echo $unixFile

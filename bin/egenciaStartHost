@@ -1,0 +1,4 @@
+#!/bin/bash
+_port=$1
+[ -z $_port ] && echo "Enter port number." && exit 0;
+mvn tomcat7:run-war -Dmaven.tomcat.port=$1 -Dmaven.tomcat.uriEncoding=UTF-8 -DskipTests

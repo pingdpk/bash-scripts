@@ -1,0 +1,2 @@
+#!/bin/bash
+find $1 -type $2 | grep --color "$3"

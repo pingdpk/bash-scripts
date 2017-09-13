@@ -1,0 +1,8 @@
+echo -e "#Fetching origin.."
+git fetch origin
+
+echo -e "\n#Fetching personal.."
+git fetch personal
+
+#echo -e "\n#Fetching ibm team.."
+#git fetch ibm-team
